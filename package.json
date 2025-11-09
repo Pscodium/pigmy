@@ -1,6 +1,6 @@
 {
   "name": "pigmy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple and expressive terminal color library for Node.js.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
