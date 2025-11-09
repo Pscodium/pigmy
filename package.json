@@ -1,6 +1,6 @@
 {
   "name": "pigmy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple and expressive terminal color library for Node.js.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -14,7 +14,8 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc --module ESNext --outDir dist --declaration --declarationDir dist",
+    "build": "tsup lib/index.ts --format cjs,esm --dts --out-dir dist",
+    "build:tsc": "tsc --module ESNext --outDir dist --declaration --declarationDir dist",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -32,6 +33,7 @@
   "files": ["dist"],
   "sideEffects": false,
   "devDependencies": {
+    "tsup": "^6.7.0",
     "typescript": "^5.9.3"
   }
 }
