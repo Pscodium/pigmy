@@ -1,6 +1,6 @@
 import { ansi, colorize } from './utils/ansi/index.js';
 
-export const colora = {
+export const pigmy = {
   red: (text: string) => colorize(text, ansi.red),
   green: (text: string) => colorize(text, ansi.green),
   yellow: (text: string) => colorize(text, ansi.yellow),
