@@ -1,69 +1,93 @@
 # Pigmy
 
-Pigmy is a small, expressive terminal color helper for Node.js. It provides a set of convenient functions to colorize and style text for CLI output.
+Pigmy is a tiny, expressive terminal color helper for Node.js. It provides a fluent API
+to colorize and style text for CLI output and ships TypeScript declaration files so
+consumers get typing support.
 
 ## Install
 
 Install from npm:
 
-```bash
+```powershell
 npm install pigmy
 ```
 
-## Quick usage
+## Usage
 
-Pigmy exports a `pigmy` helper with pre-built color and style functions.
-
-ES module example:
+Pigmy works the same whether your project is JavaScript or TypeScript — here's a minimal example you can copy into your CLI script or project:
 
 ```js
-import { pigmy } from 'pigmy';
+import pigmy from 'pigmy';
 
 console.log(pigmy.red('This is red text'));
-console.log(pigmy.success('Operation completed'));
-console.log(pigmy.bold('Important'));
+console.log(pigmy.bold.cyan('Important'));
+console.log(pigmy.hex('#C200FF')('Purple by hex'));
+console.log(pigmy.rgb(255, 160, 0)('Orange by rgb'));
+
+// chaining styles (getter-based):
+console.log(pigmy.bold.underline.magenta('Bold, underlined, magenta'));
 ```
 
-CommonJS example (when using require):
+## API overview
+
+- Color functions: `pigmy.black|red|green|yellow|blue|magenta|cyan|white|gray(text)`
+- Background colors: `pigmy.bgBlack|bgRed|bgGreen|...` (same names with `bg` prefix)
+- Styles (getter properties that return a new builder): `pigmy.bold`, `pigmy.italic`, `pigmy.underline`, `pigmy.reset`, etc. You can chain styles like `pigmy.bold.underline.red('...')`.
+- Convenience color constructors:
+	- `pigmy.hex('#rrggbb')(text)` — 24-bit color by hex
+	- `pigmy.rgb(r,g,b)(text)` — 24-bit color by RGB
+	- `pigmy.bgHex('#rrggbb')(text)`
+	- `pigmy.bgRgb(r,g,b)(text)`
+
+Examples:
 
 ```js
-const { pigmy } = require('pigmy');
-
-console.log(pigmy.info('Here is some info'));
-console.log(pigmy.error('Something went wrong'));
+console.log(pigmy.hex('#00ff88')('Hex color'));
+console.log(pigmy.bgHex('#001122')('Background with hex'));
+console.log(pigmy.rgb(123,45,67)('RGB color'));
 ```
 
-## API (short)
+## TypeScript support
 
-- `pigmy.red(text)` — red text
-- `pigmy.green(text)` — green text
-- `pigmy.yellow(text)` — yellow text
-- `pigmy.blue(text)` — blue text
-- `pigmy.magenta(text)` — magenta text
-- `pigmy.cyan(text)` — cyan text
-- `pigmy.white(text)` — white text
-- `pigmy.bold(text)` — bold styling
-- `pigmy.underline(text)` — underlined text
-- `pigmy.bgRed(text)` / `pigmy.bgGreen(text)` / `pigmy.bgBlue(text)` — background colors
+Pigmy ships declaration files (`dist/index.d.ts`) so TypeScript projects get types automatically
+when you `import pigmy from 'pigmy'`.
 
-Convenience methods:
+If you author JS and use JSDoc, you can generate or update `.d.ts` files with `tsc` (requires TypeScript installed):
 
-- `pigmy.success(text)` — bold green (for success messages)
-- `pigmy.error(text)` — bold red (for error messages)
-- `pigmy.warn(text)` — bold yellow (for warnings)
-- `pigmy.info(text)` — cyan (for informational messages)
+```powershell
+npm run build:tsc
+```
 
-## TypeScript
+> Note: the package includes pre-built `.d.ts` declarations. The normal `npm run build` produces bundles in `dist/`
+> and the repository stores `.d.ts` sources under `lib/` which are copied to `dist/` by the build.
 
-Pigmy ships TypeScript types. You can import and get typed helpers in TS projects.
+## Testing the distributed bundle locally
 
-## Build
+There is a small test harness in `test/` to exercise the built bundles. From the project root:
 
-The project is written in TypeScript. To build locally (produces `dist/`):
+```powershell
+cd test
+.\run-tests.ps1
+```
 
-```bash
+Or run the test scripts individually with Node.
+
+## Build & publish
+
+Build the package (produces `dist/` and copies `.d.ts`):
+
+```powershell
 npm run build
 ```
+
+## Development notes
+
+- The published package includes ESM and CJS bundles and `dist/index.d.ts`.
+- If you want to maintain automatic generation of `.d.ts` from JSDoc or JS sources, keep a local TypeScript install and use `npm run build:tsc`.
+
+## Maintainers
+
+- [Pscodium](https://github.com/Pscodium)
 
 ## License
 
