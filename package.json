@@ -1,5 +1,5 @@
 {
-  "name": "colora",
+  "name": "pigmy",
   "version": "1.0.0",
   "description": "A simple and expressive terminal color library for Node.js.",
   "main": "dist/index.cjs",
@@ -22,7 +22,7 @@
     "terminal",
     "cli",
     "console",
-    "colora",
+    "pigmy",
     "ansi",
     "style",
     "text"
