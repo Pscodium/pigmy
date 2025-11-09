@@ -1,0 +1,37 @@
+{
+  "name": "colora",
+  "version": "1.0.0",
+  "description": "A simple and expressive terminal color library for Node.js.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc --module ESNext --outDir dist --declaration --declarationDir dist",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "color",
+    "terminal",
+    "cli",
+    "console",
+    "colora",
+    "ansi",
+    "style",
+    "text"
+  ],
+  "author": "Pscodium <peterson@pscodium.dev>",
+  "license": "MIT",
+  "files": ["dist"],
+  "sideEffects": false,
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
