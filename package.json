@@ -1,6 +1,6 @@
 {
   "name": "pigmy",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple and expressive terminal color library for Node.js.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -36,7 +36,7 @@
   "author": "Pscodium <peterson@pscodium.dev>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pscodium/lib-boilerplate.git"
+    "url": "git+https://github.com/Pscodium/pigmy.git"
   },
   "license": "MIT",
   "sideEffects": false,
