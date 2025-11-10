@@ -8,7 +8,7 @@ export const colors = {
   cyan: 36,
   white: 37,
   gray: 90,
-};
+} as const;
 
 export const bgColors = {
   black: 40,
@@ -20,7 +20,7 @@ export const bgColors = {
   cyan: 46,
   white: 47,
   gray: 100,
-};
+} as const;
 
 export const styles = {
   reset: 0,
@@ -31,6 +31,10 @@ export const styles = {
   inverse: 7,
   hidden: 8,
   strikethrough: 9,
-};
+} as const;
 
 export const ESC = "\x1b[";
+
+export type ColorName = keyof typeof colors;
+export type BgColorName = keyof typeof bgColors;
+export type StyleName = keyof typeof styles;
